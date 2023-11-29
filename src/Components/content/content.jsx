@@ -3,8 +3,9 @@ import Categories from "../categories/categories";
 import Sort from "../sort/sort";
 import CartItem from "../cartItem/cartItem";
 import './content.scss';
+import SkeletonPizza from "../skeleton/SkeletonPizza";
 
-const Content = ({items}) => {
+const Content = ({items, isLoading}) => {
   return (
     <div className="content">
       <div className="container">
@@ -14,7 +15,10 @@ const Content = ({items}) => {
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
-          {items.map((item) => <CartItem item={item} key={item.id}/>)}
+          {
+            isLoading ?
+                [...new Array(8).map(i => <SkeletonPizza key={i} />)]
+              : items.map((item) => <CartItem item={item} key={item.id}/>)}
         </div>
       </div>
     </div>

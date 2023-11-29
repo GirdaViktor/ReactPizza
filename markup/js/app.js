@@ -156,7 +156,7 @@ function setBigSlide(obj) {
   // $(".big-slider__images ul li")
   //   .removeClass("active")
   //   .animate({ opacity: 0 }, 200);
-  // $('.big-slider__images ul li[data-index="' + sliderIndex + '"]')
+  // $('.big-slider__images ul li[data-home-page="' + sliderIndex + '"]')
   //   .addClass("active")
   //   .animate({ opacity: 1 }, 200);
 
@@ -164,11 +164,11 @@ function setBigSlide(obj) {
   $('.big-slider__images ul li').removeClass('active').animate({
     opacity: 0
   }, 300);
-  $('.big-slider__images ul li[data-index="' + sliderIndex + '"]').addClass('active').animate({
+  $('.big-slider__images ul li[data-home-page="' + sliderIndex + '"]').addClass('active').animate({
     opacity: 1
   }, 300);
   $('.big-slider__informations ul li').removeClass('active');
-  $('.big-slider__informations ul li[data-index="' + sliderIndex + '"]').addClass('active');
+  $('.big-slider__informations ul li[data-home-page="' + sliderIndex + '"]').addClass('active');
 }
 
 $(document).ready(function () {
