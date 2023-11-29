@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import './cartItem.scss';
 
 const CartItem = ({item}) => {

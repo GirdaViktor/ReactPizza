@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import './categories.scss';
 
 const Categories = () => {
@@ -10,6 +11,7 @@ const Categories = () => {
       <ul>
         {categoriesList.map((item, i) =>
           <li
+            key={i}
             className={activeCategory == i ? 'active' : ''}
             onClick={() => {
               setActiveCategory(i);
