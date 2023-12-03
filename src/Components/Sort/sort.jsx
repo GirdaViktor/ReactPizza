@@ -1,20 +1,20 @@
 import React, {useState} from 'react';
+
+import {useDispatch, useSelector} from "react-redux";
+import {setSort} from "../../Redux/filterSlice";
+
+import {sortList} from "./sortList.enum";
 import './sort.scss';
 
 const Sort = () => {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(0);
-  const sortList = [
-    'популярности',
-    'цене',
-    'алфавиту'
-  ];
+  const dispatch = useDispatch();
+  const activeSort = useSelector(state => state.filterReducer.sort);
 
-  const onClickItemSort = (i) => {
-    setActive(i);
+  const onClickItemSort = (item) => {
+    dispatch(setSort(item));
     setOpen(false);
   }
-
 
   return (
     <div className="sort">
@@ -36,16 +36,17 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>{sortList[active]}</span>
+        <span>{activeSort.name}</span>
       </div>
       {open &&
         <div className="sort__popup">
 
           <ul>
-            {sortList.map( (item, i) => <li
-              className={active == i ? 'active' : ''}
-              onClick={() => onClickItemSort(i)}
-            >{item}</li>)}
+            {sortList.map(item => <li
+              className={activeSort.sort == item.sort ? 'active' : ''}
+              onClick={() => onClickItemSort(item)}
+              key={item.sort}
+            >{item.name}</li>)}
           </ul>
         </div>
       }

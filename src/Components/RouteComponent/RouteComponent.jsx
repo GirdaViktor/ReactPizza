@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-import CartPage from "../../pages/cart/cart-page";
-import HomePage from "../../pages/home-page/home-page";
-import Layout from "../layout/layout";
-import PageNotFound from "../../pages/page-not-found/page-not-found";
+import CartPage from "../../Pages/CartPage/CartPage";
+import HomePage from "../../Pages/HomePage/HomePage";
+import Layout from "../Layout/layout";
+import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 
 const RouteComponent = () => {
   return (

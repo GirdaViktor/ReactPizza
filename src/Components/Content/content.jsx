@@ -1,11 +1,15 @@
 import React from 'react';
-import Categories from "../categories/categories";
-import Sort from "../sort/sort";
-import CartItem from "../cartItem/cartItem";
+
+import Categories from "../Categories/categories";
+import Sort from "../Sort/sort";
+import CartItem from "../CartItem/cartItem";
+import SkeletonPizza from "../Skeleton/SkeletonPizza";
+import Pagination from "../Pagination/Pagination";
+
 import './content.scss';
-import SkeletonPizza from "../skeleton/SkeletonPizza";
 
 const Content = ({items, isLoading}) => {
+
   return (
     <div className="content">
       <div className="container">
@@ -17,9 +21,10 @@ const Content = ({items, isLoading}) => {
         <div className="content__items">
           {
             isLoading ?
-                [...new Array(8).map(i => <SkeletonPizza key={i} />)]
+                [...new Array(8).map((_, i) => <SkeletonPizza key={i} />)]
               : items.map((item) => <CartItem item={item} key={item.id}/>)}
         </div>
+        <Pagination />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
-import './cart-page.scss';
-import Cart from "../../Components/cart/cart";
+import './CartPage.scss';
+import Cart from "../../Components/Cart/cart";
 
 const CartPage = () => {
   return (
