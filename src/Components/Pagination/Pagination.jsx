@@ -19,7 +19,8 @@ const Pagination = () => {
       previousLabel="<-"
       onPageChange={onChangePage}
       pageRangeDisplayed={12}
-      pageCount={currentPage}
+      pageCount={3}
+      forcePage={currentPage}
       renderOnZeroPageCount={null}
     />
   );

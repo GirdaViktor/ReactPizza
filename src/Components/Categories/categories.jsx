@@ -15,7 +15,7 @@ const Categories = () => {
         {categoriesList.map((item, i) =>
           <li
             key={i}
-            className={categoryId == i ? 'active' : ''}
+            className={categoryId === i ? 'active' : ''}
             onClick={() => {
               dispatch(setCategoryId(i));
             }}

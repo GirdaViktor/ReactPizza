@@ -2,7 +2,7 @@ import React from 'react';
 
 import Categories from "../Categories/categories";
 import Sort from "../Sort/sort";
-import CartItem from "../CartItem/cartItem";
+import CardItem from "../CardItem/cardItem";
 import SkeletonPizza from "../Skeleton/SkeletonPizza";
 import Pagination from "../Pagination/Pagination";
 
@@ -22,7 +22,7 @@ const Content = ({items, isLoading}) => {
           {
             isLoading ?
                 [...new Array(8).map((_, i) => <SkeletonPizza key={i} />)]
-              : items.map((item) => <CartItem item={item} key={item.id}/>)}
+              : items.map((item) => <CardItem item={item} key={item.id}/>)}
         </div>
         <Pagination />
       </div>

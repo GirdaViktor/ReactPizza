@@ -1,11 +1,30 @@
 import React, {useState} from 'react';
 
-import './cartItem.scss';
+import {addItem} from "../../Redux/cartSlice";
+import {useDispatch, useSelector} from "react-redux";
 
-const CartItem = ({item}) => {
+import './cardItem.scss';
+
+const CardItem = ({item}) => {
+  const dispatch = useDispatch();
   const [activeSize, setItemSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
   const types = ['тонкое', 'традиционное'];
+
+  const cartItem = useSelector(state => state.cartReducer.items.find(obj => obj.id === item.id));
+
+  const onClickAdd = () => {
+    const itemCart = {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      imageUrl: item.imageUrl,
+      size: activeSize,
+      type: types[activeType]
+    }
+
+    dispatch(addItem(itemCart));
+  }
 
   return (
     <div className="pizza-block">
@@ -20,7 +39,7 @@ const CartItem = ({item}) => {
           {item.types.map((i) =>
             <li
               key={i}
-              className={activeType == i ? "active" : ''}
+              className={activeType === i ? "active" : ''}
               onClick={() => setActiveType(i)}
             >{types[i]}</li>)
           }
@@ -29,7 +48,7 @@ const CartItem = ({item}) => {
           {item.size.map((size, i) =>
             <li
               key={i}
-              className={activeSize == i ? "active" : ''}
+              className={activeSize === i ? "active" : ''}
               onClick={() => setItemSize(i)}
             >{size} см.</li>)
           }
@@ -37,7 +56,10 @@ const CartItem = ({item}) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {item.price} ₽</div>
-        <div className="button button--outline button--add">
+        <div
+          className="button button--outline button--add"
+          onClick={onClickAdd}
+        >
           <svg
             width="12"
             height="12"
@@ -51,11 +73,11 @@ const CartItem = ({item}) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          <i>{cartItem ? cartItem.count : 0}</i>
         </div>
       </div>
     </div>
   );
 };
 
-export default CartItem;
+export default CardItem;
