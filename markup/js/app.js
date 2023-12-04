@@ -36,10 +36,10 @@ $(document).bind('mousewheel DOMMouseScroll', function (event) {
     }, 1000, function () {
       isScrolling = false;
 
-      if ($('.header').hasClass('header--hide')) {// $('.header').removeClass('header--hide');
+      if ($('.Header').hasClass('Header--hide')) {// $('.Header').removeClass('Header--hide');
       }
     });
-    $('.header').removeClass('header--in-white');
+    $('.Header').removeClass('Header--in-white');
     scrolled = false;
   }
 });
@@ -53,26 +53,26 @@ document.onkeydown = function (_ref) {
 };
 
 $(window).on('scroll', function (a, b, c) {
-  var headerOffset = $('.header').outerHeight();
+  var headerOffset = $('.Header').outerHeight();
 
   if ($(window).scrollTop() + headerOffset >= $('.drimclub-benefit').offset().top && $(window).scrollTop() + headerOffset < $('.drimclub-benefit').outerHeight() + $('.drimclub-benefit').offset().top) {
-    $('.header').addClass('header--in-white');
+    $('.Header').addClass('Header--in-white');
   } else {
-    $('.header').removeClass('header--in-white');
+    $('.Header').removeClass('Header--in-white');
   }
 
   if ($(window).scrollTop() + headerOffset >= $('.big-slider').offset().top && $(window).scrollTop() + headerOffset < $('.big-slider').outerHeight() + $('.big-slider').offset().top) {
-    $('.header').addClass('header--in-gray');
+    $('.Header').addClass('Header--in-gray');
   } else {
-    $('.header').removeClass('header--in-gray');
+    $('.Header').removeClass('Header--in-gray');
   }
 
   if ($(window).scrollTop() + headerOffset >= $('.discounts-block').offset().top && $(window).scrollTop() + headerOffset < $('.discounts-block').outerHeight() + $('.discounts-block').offset().top) {
-    $('.header').addClass('header--in-white');
+    $('.Header').addClass('Header--in-white');
   }
 
   if ($(window).scrollTop() + headerOffset >= $('.recomended-drimclub').offset().top && $(window).scrollTop() + headerOffset < $('.recomended-drimclub').outerHeight() + $('.recomended-drimclub').offset().top) {
-    $('.header').addClass('header--in-gray');
+    $('.Header').addClass('Header--in-gray');
   }
 
   if ($(window).scrollTop() + 350 >= $('.discounts-block__audio-courses').offset().top && $(window).scrollTop() + 350 < $('.discounts-block__audio-courses').outerHeight() + $('.discounts-block__audio-courses').offset().top) {
@@ -80,7 +80,7 @@ $(window).on('scroll', function (a, b, c) {
   }
 
   if ($(window).scrollTop() + headerOffset >= $('.connect-drimclub').offset().top && $(window).scrollTop() + headerOffset < $('.connect-drimclub').outerHeight() + $('.connect-drimclub').offset().top) {
-    $('.header').addClass('header--in-white');
+    $('.Header').addClass('Header--in-white');
   }
 
   var currentScrollPos = window.pageYOffset;
@@ -89,9 +89,9 @@ $(window).on('scroll', function (a, b, c) {
   if (prevScrollpos > currentScrollPos && !isScrolling) {
     if (isMobile && notHideInMobileMain) {
       return;
-    } // $('.header').removeClass('header--hide');
+    } // $('.Header').removeClass('Header--hide');
 
-  } else {// $('.header').addClass('header--hide');
+  } else {// $('.Header').addClass('Header--hide');
     }
 
   prevScrollpos = currentScrollPos;
@@ -156,7 +156,7 @@ function setBigSlide(obj) {
   // $(".big-slider__images ul li")
   //   .removeClass("active")
   //   .animate({ opacity: 0 }, 200);
-  // $('.big-slider__images ul li[data-home-page="' + sliderIndex + '"]')
+  // $('.big-slider__images ul li[data-HomePage="' + sliderIndex + '"]')
   //   .addClass("active")
   //   .animate({ opacity: 1 }, 200);
 
@@ -164,11 +164,11 @@ function setBigSlide(obj) {
   $('.big-slider__images ul li').removeClass('active').animate({
     opacity: 0
   }, 300);
-  $('.big-slider__images ul li[data-home-page="' + sliderIndex + '"]').addClass('active').animate({
+  $('.big-slider__images ul li[data-HomePage="' + sliderIndex + '"]').addClass('active').animate({
     opacity: 1
   }, 300);
   $('.big-slider__informations ul li').removeClass('active');
-  $('.big-slider__informations ul li[data-home-page="' + sliderIndex + '"]').addClass('active');
+  $('.big-slider__informations ul li[data-HomePage="' + sliderIndex + '"]').addClass('active');
 }
 
 $(document).ready(function () {
