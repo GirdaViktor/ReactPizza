@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import pizzaLogo from '../../assets/img/pizza-logo.svg'
 
 import Search from "../Search/Search";
 
@@ -13,7 +14,7 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <Link to={'/'} className="header__logo">
-          <img width="38" src="./img/pizza-logo.svg" alt="Pizza logo"/>
+          <img width="38" src={pizzaLogo} alt="Pizza logo"/>
           <div>
             <h1>React Pizza</h1>
             <p>самая вкусная пицца во вселенной</p>

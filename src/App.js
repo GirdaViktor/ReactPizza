@@ -12,7 +12,7 @@ function App() {
   return (
     <SearchContext.Provider value={{ searchValue, setSearchValue }}>
       <div className="wrapper">
-          <RouteComponent />
+        <RouteComponent />
       </div>
     </SearchContext.Provider>
   );
