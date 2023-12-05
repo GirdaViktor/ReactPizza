@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {useDispatch, useSelector} from "react-redux";
-import {setSort} from "../../Redux/filterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setSort } from "../../Redux/filterSlice";
 
-import {sortList} from "./sortList.enum";
+import { sortList } from "./sortList.enum";
 import './sort.scss';
 
 const Sort = () => {

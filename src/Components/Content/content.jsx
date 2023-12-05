@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useSelector } from "react-redux";
 
 import Categories from "../Categories/categories";
 import Sort from "../Sort/sort";
@@ -6,9 +7,17 @@ import CardItem from "../CardItem/cardItem";
 import SkeletonPizza from "../Skeleton/SkeletonPizza";
 import Pagination from "../Pagination/Pagination";
 
+import { SearchContext } from "../../App";
+
 import './content.scss';
 
-const Content = ({items, isLoading}) => {
+const Content = () => {
+  const { status } = useSelector(state => state.dataReducer);
+  const {items} = useSelector(state => state.dataReducer);
+  const {searchValue} = useContext(SearchContext);
+
+  const data = items
+    .filter(obj => obj.title.toLowerCase().includes(searchValue.toLowerCase()) ? true : false)
 
   return (
     <div className="content">
@@ -20,9 +29,9 @@ const Content = ({items, isLoading}) => {
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
           {
-            isLoading ?
+            status === 'loading' ?
                 [...new Array(8).map((_, i) => <SkeletonPizza key={i} />)]
-              : items.map((item) => <CardItem item={item} key={item.id}/>)}
+              : data.map((item) => <CardItem item={item} key={item.id}/>)}
         </div>
         <Pagination />
       </div>
