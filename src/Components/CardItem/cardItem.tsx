@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import './cardItem.scss';
 
-interface ItemType {
+export interface IItem {
   category: number;
   id: number;
   imgUrl: string;
@@ -16,7 +16,7 @@ interface ItemType {
   types: number[];
 }
 
-export interface ItemCartType {
+export interface IItemCart {
   id: number;
   title: string;
   price: number;
@@ -26,7 +26,7 @@ export interface ItemCartType {
   count?: number;
 }
 
-const CardItem: React.FC<ItemType> = (item) => {
+const CardItem: React.FC<IItem> = (item) => {
   const dispatch = useDispatch();
   const [activeSize, setItemSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
@@ -35,7 +35,7 @@ const CardItem: React.FC<ItemType> = (item) => {
   const cartItem = useSelector(cartSelector).items.find((obj: any) => obj.id === item.id);
 
   const onClickAdd = () => {
-    const itemCart: ItemCartType = {
+    const itemCart: IItemCart = {
       id: item.id,
       title: item.title,
       price: item.price,

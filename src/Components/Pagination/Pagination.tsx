@@ -6,11 +6,11 @@ import { paginationSelector, setCurrentPage } from "../../Redux/paginationSlice"
 
 import './pagination.scss';
 
-const Pagination = () => {
+const Pagination:React.FC = () => {
   const dispatch = useDispatch();
-  const {currentPage} = useSelector(paginationSelector);
+  const { currentPage } = useSelector(paginationSelector);
 
-  const onChangePage = evt => dispatch(setCurrentPage(evt.selected + 1))
+  const onChangePage = (evt:any) => dispatch(setCurrentPage(evt.selected + 1))
 
   return (
     <ReactPaginate

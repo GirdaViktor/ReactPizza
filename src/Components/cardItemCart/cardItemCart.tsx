@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { incItem, decItem, removeItem } from "../../Redux/cartSlice";
-import { ItemCartType } from "../CardItem/cardItem";
+import { IItemCart } from "../CardItem/cardItem";
 
-const CardItemCart:React.FC<ItemCartType> = (item) => {
+const CardItemCart:React.FC<IItemCart> = (item) => {
   const dispatch = useDispatch()
   const sizes: string[] = ['26 см', '30 см', '40 см'];
 
