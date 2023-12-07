@@ -56,7 +56,7 @@ const Cart = () => {
               </div>
             </div>
             <div className="content__items">
-              {items.map(item => <CardItemCart item={item} key={item.id}/>)}
+              {items.map(item => <CardItemCart {...item} key={item.id}/>)}
             </div>
             <div className="cart__bottom">
               <div className="cart__bottom-details">

@@ -5,26 +5,47 @@ import { useDispatch, useSelector } from "react-redux";
 
 import './cardItem.scss';
 
-const CardItem = ({item}) => {
+interface ItemType {
+  category: number;
+  id: number;
+  imgUrl: string;
+  price: number;
+  rating: number;
+  size: number[];
+  title: string;
+  types: number[];
+}
+
+export interface ItemCartType {
+  id: number;
+  title: string;
+  price: number;
+  imageUrl: string;
+  size: number;
+  type: string;
+  count?: number;
+}
+
+const CardItem: React.FC<ItemType> = (item) => {
   const dispatch = useDispatch();
   const [activeSize, setItemSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
   const types = ['тонкое', 'традиционное'];
 
-  const cartItem = useSelector(cartSelector).items.find(obj => obj.id === item.id);
+  const cartItem = useSelector(cartSelector).items.find((obj: any) => obj.id === item.id);
 
   const onClickAdd = () => {
-    const itemCart = {
+    const itemCart: ItemCartType = {
       id: item.id,
       title: item.title,
       price: item.price,
-      imageUrl: item.imageUrl,
+      imageUrl: item.imgUrl,
       size: activeSize,
       type: types[activeType]
     }
 
     dispatch(addItem(itemCart));
-  }
+  };
 
   return (
     <div className="pizza-block">

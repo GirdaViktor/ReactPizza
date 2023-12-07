@@ -31,7 +31,7 @@ const Content = () => {
           {
             status === 'loading' ?
                 [...new Array(8).map((_, i) => <SkeletonPizza key={i} />)]
-              : data.map((item) => <CardItem item={item} key={item.id}/>)}
+              : data.map((item) => <CardItem {...item} key={item.id}/>)}
         </div>
         <Pagination />
       </div>
