@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { addItem } from "../../Redux/cartSlice";
+import { addItem, cartSelector } from "../../Redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import './cardItem.scss';
@@ -11,7 +11,7 @@ const CardItem = ({item}) => {
   const [activeType, setActiveType] = useState(0);
   const types = ['тонкое', 'традиционное'];
 
-  const cartItem = useSelector(state => state.cartReducer.items.find(obj => obj.id === item.id));
+  const cartItem = useSelector(cartSelector).items.find(obj => obj.id === item.id);
 
   const onClickAdd = () => {
     const itemCart = {

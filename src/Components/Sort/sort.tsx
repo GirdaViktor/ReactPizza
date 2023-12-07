@@ -1,24 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setSort } from "../../Redux/filterSlice";
+import { filterSelector, setSort } from "../../Redux/filterSlice";
 
-import { sortList } from "./sortList.enum";
+import { sortList, SortListItemType } from "./sortList.enum";
 import './sort.scss';
 
-const Sort = () => {
+const Sort: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const activeSort = useSelector(state => state.filterReducer.sort);
+  const activeSort = useSelector(filterSelector).sort;
 
-  const onClickItemSort = (item) => {
+  const onClickItemSort = (item: SortListItemType) => {
     dispatch(setSort(item));
     setOpen(false);
-  }
+  };
+
+  const onClickOpenSort = () => {
+    open ? setOpen(false) : setOpen(true)
+  };
 
   useEffect(() => {
-    const handleClosePopup = (evt) => {
+    const handleClosePopup = (evt: any) => {
       if (!evt.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }
@@ -29,14 +33,12 @@ const Sort = () => {
     return () => {
       document.body.removeEventListener('click', handleClosePopup);
     }
-  }, [])
+  }, []);
 
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label"
-        onClick={() => {
-          open ? setOpen(false) : setOpen(true)
-        }}
+        onClick={onClickOpenSort}
       >
         <svg
           width="10"
@@ -55,7 +57,6 @@ const Sort = () => {
       </div>
       {open &&
         <div className="sort__popup">
-
           <ul>
             {sortList.map(item => <li
               className={activeSort.sort === item.sort ? 'active' : ''}

@@ -1,14 +1,17 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import pizzaLogo from '../../assets/img/pizza-logo.svg'
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import {cartSelector} from "../../Redux/cartSlice";
 
 import Search from "../Search/Search";
 
+import pizzaLogo from '../../assets/img/pizza-logo.svg'
+
 import './header.scss';
 
-const Header = () => {
-  const {totalPrice, count} = useSelector(state => state.cartReducer);
+const Header: React.FC = () => {
+  const {totalPrice, count} = useSelector(cartSelector);
 
   return (
     <header className="header">

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactPaginate from "react-paginate";
 
-import {useDispatch, useSelector} from "react-redux";
-import {setCurrentPage} from "../../Redux/paginationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { paginationSelector, setCurrentPage } from "../../Redux/paginationSlice";
 
 import './pagination.scss';
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const {currentPage} = useSelector(state => state.paginationReducer);
+  const {currentPage} = useSelector(paginationSelector);
 
   const onChangePage = evt => dispatch(setCurrentPage(evt.selected + 1))
 
