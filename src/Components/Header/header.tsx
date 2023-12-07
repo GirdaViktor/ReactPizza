@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import {cartSelector} from "../../Redux/cartSlice";
+import { cartSelector } from "../../Redux/cartSlice";
 
 import Search from "../Search/Search";
 

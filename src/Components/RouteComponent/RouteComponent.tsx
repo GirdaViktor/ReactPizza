@@ -6,7 +6,7 @@ import HomePage from "../../Pages/HomePage/HomePage";
 import Layout from "../Layout/layout";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 
-const RouteComponent = () => {
+const RouteComponent: React.FC = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
