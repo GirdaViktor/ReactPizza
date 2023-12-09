@@ -6,6 +6,11 @@ import { filterSelector, setSort } from "../../Redux/filterSlice";
 import { sortList, SortListItemType } from "./sortList.enum";
 import './sort.scss';
 
+type PopupClickType = MouseEvent & {
+  path: Node[];
+  composedPath: [];
+};
+
 const Sort: React.FC = () => {
   const [open, setOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
@@ -22,8 +27,12 @@ const Sort: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleClosePopup = (evt: any) => {
-      if (!evt.composedPath().includes(sortRef.current)) {
+    const handleClosePopup = (evt: MouseEvent) => {
+      const _event = evt as PopupClickType;
+
+      const path = _event.path || (_event.composedPath)
+
+      if (sortRef.current && !path.includes(sortRef.current)) {
         setOpen(false);
       }
     };

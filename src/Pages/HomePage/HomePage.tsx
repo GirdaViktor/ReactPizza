@@ -7,11 +7,12 @@ import { paginationSelector } from "../../Redux/paginationSlice";
 
 import Content from "../../Components/Content/content";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const dispatch = useDispatch();
-  const {categoryId, sort, searchValue} = useSelector(filterSelector);
-  const {currentPage} = useSelector(paginationSelector);
+  const { categoryId, sort, searchValue } = useSelector(filterSelector);
+  const { currentPage } = useSelector(paginationSelector);
 
+  // @ts-ignore
   const getData = () => dispatch(fetchDataItems({currentPage, categoryId, sort, searchValue}));
 
   useEffect(() => {

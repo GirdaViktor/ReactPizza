@@ -17,7 +17,7 @@ const Content:React.FC = () => {
   const { searchValue } = useSelector(filterSelector);
 
   const data = items
-    .filter((obj:any) => obj.title.toLowerCase().includes(searchValue.toLowerCase()) ? true : false);
+    .filter((obj:IItem) => obj.title.toLowerCase().includes(searchValue.toLowerCase()) ? true : false);
 
   return (
     <div className="content">
