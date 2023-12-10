@@ -6,7 +6,7 @@ import { dataSelector, IItem } from "../../Redux/dataSlice";
 
 import Categories from "../Categories/categories";
 import Sort from "../Sort/sort";
-import CardItem, {  } from "../CardItem/cardItem";
+import CardItem from "../CardItem/cardItem";
 import SkeletonPizza from "../Skeleton/SkeletonPizza";
 import Pagination from "../Pagination/Pagination";
 
