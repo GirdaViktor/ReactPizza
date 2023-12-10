@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from "react-redux";
 
 import { filterSelector } from "../../Redux/filterSlice";
-import { dataSelector } from "../../Redux/dataSlice";
+import { dataSelector, IItem } from "../../Redux/dataSlice";
 
 import Categories from "../Categories/categories";
 import Sort from "../Sort/sort";
-import CardItem, { IItem } from "../CardItem/cardItem";
+import CardItem, {  } from "../CardItem/cardItem";
 import SkeletonPizza from "../Skeleton/SkeletonPizza";
 import Pagination from "../Pagination/Pagination";
 

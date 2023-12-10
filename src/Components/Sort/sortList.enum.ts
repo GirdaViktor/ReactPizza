@@ -1,6 +1,6 @@
 export type SortListItemType = {
   name: string;
-  sort: string;
+  sort: 'rating' | 'title' | 'price';
 }
 
 export const sortList:SortListItemType[] = [

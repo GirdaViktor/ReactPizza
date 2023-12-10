@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "./Store";
 
-const initialState = {
+interface IInitialStatePagination {
+  currentPage: number;
+}
+
+const initialState: IInitialStatePagination = {
   currentPage: 1,
 };
 
@@ -15,5 +20,5 @@ const paginationSlice = createSlice({
 });
 
 export const { setCurrentPage } = paginationSlice.actions;
-export const paginationSelector = state => state.paginationReducer;
+export const paginationSelector = (state: RootState) => state.paginationReducer;
 export default paginationSlice.reducer;

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { incItem, decItem, removeItem } from "../../Redux/cartSlice";
-import { IItemCart } from "../CardItem/cardItem";
+import {incItem, decItem, removeItem, ItemCartType} from "../../Redux/cartSlice";
 
-const CardItemCart:React.FC<IItemCart> = (item) => {
+const CardItemCart:React.FC<ItemCartType> = (item) => {
   const dispatch = useDispatch()
   const sizes: string[] = ['26 см', '30 см', '40 см'];
 
@@ -59,7 +58,7 @@ const CardItemCart:React.FC<IItemCart> = (item) => {
         </div>
       </div>
       <div className="cart__item-price">
-        <b>{item.count ? item.count * item.price: ''} ₽</b>
+        <b>{item.count ? item.count * item.price : '0'} ₽</b>
       </div>
       <div className="cart__item-remove">
         <div

@@ -1,30 +1,10 @@
 import React, { useState } from 'react';
 
-import { addItem, cartSelector } from "../../Redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { IItem } from "../../Redux/dataSlice";
+import { addItem, cartSelector, ItemCartType } from "../../Redux/cartSlice";
 
 import './cardItem.scss';
-
-export interface IItem {
-  category: number;
-  id: number;
-  imgUrl: string;
-  price: number;
-  rating: number;
-  size: number[];
-  title: string;
-  types: number[];
-}
-
-export interface IItemCart {
-  id: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-  size: number;
-  type: string;
-  count?: number;
-}
 
 const CardItem: React.FC<IItem> = (item) => {
   const dispatch = useDispatch();
@@ -32,16 +12,17 @@ const CardItem: React.FC<IItem> = (item) => {
   const [activeType, setActiveType] = useState(0);
   const types = ['тонкое', 'традиционное'];
 
-  const cartItem = useSelector(cartSelector).items.find((obj: any) => obj.id === item.id);
+  const cartItem = useSelector(cartSelector).items.find((obj: ItemCartType) => obj.id === item.id);
 
   const onClickAdd = () => {
-    const itemCart: IItemCart = {
+    const itemCart: ItemCartType = {
       id: item.id,
       title: item.title,
       price: item.price,
       imageUrl: item.imgUrl,
       size: activeSize,
-      type: types[activeType]
+      type: types[activeType],
+      count: 0
     }
 
     dispatch(addItem(itemCart));
