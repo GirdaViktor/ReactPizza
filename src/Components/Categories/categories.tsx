@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { setCategoryId } from "../../Redux/filterSlice";
+import { filterSelector, setCategoryId } from "../../Redux/filterSlice";
 
 import './categories.scss';
 
-const Categories = () => {
+const Categories: React.FC = () => {
   const dispatch = useDispatch();
-  const categoryId = useSelector(state => state.filterReducer.categoryId);
-  const categoriesList = ['Все', 'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые'];
+  const categoryId = useSelector(filterSelector).categoryId;
+  const categoriesList: string[] = ['Все', 'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
     <div className="categories">

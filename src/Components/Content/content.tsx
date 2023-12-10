@@ -1,23 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useSelector } from "react-redux";
+
+import { filterSelector } from "../../Redux/filterSlice";
+import { dataSelector, IItem } from "../../Redux/dataSlice";
 
 import Categories from "../Categories/categories";
 import Sort from "../Sort/sort";
-import CardItem from "../CardItem/cardItem";
+import CardItem, {  } from "../CardItem/cardItem";
 import SkeletonPizza from "../Skeleton/SkeletonPizza";
 import Pagination from "../Pagination/Pagination";
 
-import { SearchContext } from "../../App";
-
 import './content.scss';
 
-const Content = () => {
-  const { status } = useSelector(state => state.dataReducer);
-  const {items} = useSelector(state => state.dataReducer);
-  const {searchValue} = useContext(SearchContext);
+const Content:React.FC = () => {
+  const { status, items } = useSelector(dataSelector);
+  const { searchValue } = useSelector(filterSelector);
 
   const data = items
-    .filter(obj => obj.title.toLowerCase().includes(searchValue.toLowerCase()) ? true : false)
+    .filter((obj:IItem) => obj.title.toLowerCase().includes(searchValue.toLowerCase()) ? true : false);
 
   return (
     <div className="content">
@@ -31,7 +31,7 @@ const Content = () => {
           {
             status === 'loading' ?
                 [...new Array(8).map((_, i) => <SkeletonPizza key={i} />)]
-              : data.map((item) => <CardItem item={item} key={item.id}/>)}
+              : data.map((item:IItem) => <CardItem {...item} key={item.id}/>)}
         </div>
         <Pagination />
       </div>

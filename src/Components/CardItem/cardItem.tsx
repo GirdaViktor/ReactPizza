@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 
-import { addItem } from "../../Redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { IItem } from "../../Redux/dataSlice";
+import { addItem, cartSelector, ItemCartType } from "../../Redux/cartSlice";
 
 import './cardItem.scss';
 
-const CardItem = ({item}) => {
+const CardItem: React.FC<IItem> = (item) => {
   const dispatch = useDispatch();
   const [activeSize, setItemSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
   const types = ['тонкое', 'традиционное'];
 
-  const cartItem = useSelector(state => state.cartReducer.items.find(obj => obj.id === item.id));
+  const cartItem = useSelector(cartSelector).items.find((obj: ItemCartType) => obj.id === item.id);
 
   const onClickAdd = () => {
-    const itemCart = {
+    const itemCart: ItemCartType = {
       id: item.id,
       title: item.title,
       price: item.price,
-      imageUrl: item.imageUrl,
+      imageUrl: item.imgUrl,
       size: activeSize,
-      type: types[activeType]
+      type: types[activeType],
+      count: 0
     }
 
     dispatch(addItem(itemCart));
-  }
+  };
 
   return (
     <div className="pizza-block">
