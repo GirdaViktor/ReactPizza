@@ -4,6 +4,12 @@ import axios from "axios";
 import { RootState } from "./Store";
 import { IInitialStateFilter } from "./filterSlice";
 
+export enum Status {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error'
+}
+
 export interface IItem {
   category: number;
   id: number;
@@ -25,14 +31,12 @@ export const fetchDataItems = createAsyncThunk<IItem[], IInitialStateFilter>(
 
 interface IInitialStateData {
   items: IItem[];
-  cloneItems: IItem[];
-  status: 'loading' | 'success' | 'error';
+  status: Status;
 }
 
 const initialState: IInitialStateData = {
   items: [],
-  cloneItems: [],
-  status: 'loading'
+  status: Status.LOADING,
 };
 
 const dataSlice = createSlice({
@@ -45,21 +49,18 @@ const dataSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchDataItems.pending, (state) => {
-      state.status = 'loading';
+      state.status = Status.LOADING;
       state.items = [];
-      state.cloneItems = [];
     });
 
     builder.addCase(fetchDataItems.fulfilled, (state, action:PayloadAction<IItem[]>) => {
-      state.status = 'success';
+      state.status = Status.SUCCESS;
       state.items = action.payload;
-      state.cloneItems = action.payload;
     });
 
     builder.addCase(fetchDataItems.rejected, (state) => {
-      state.status = 'error';
+      state.status = Status.ERROR;
       state.items = [];
-      state.cloneItems = [];
     });
   },
 });
